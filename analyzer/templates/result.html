@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card shadow p-4">
+
+    <h3 class="mb-4">Analysis Result</h3>
+
+    <!-- SCORE -->
+    <h5>Resume Score</h5>
+    <div class="progress mb-4" style="height: 25px;">
+        <div class="progress-bar bg-success" style="width: {{ score }}%">
+            {{ score }}%
+        </div>
+    </div>
+
+    <!-- SKILLS -->
+    <h5>Detected Skills</h5>
+    <ul class="list-group mb-4">
+        {% for skill in skills %}
+        <li class="list-group-item">{{ skill }}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- RECOMMENDED -->
+    <h5>Recommended Skills</h5>
+    <ul class="list-group mb-4">
+        {% for skill in missing_skills %}
+        <li class="list-group-item">{{ skill }}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- JOBS -->
+    <h5>Suitable Job Roles</h5>
+    <ul class="list-group">
+        {% for job in jobs %}
+        <li class="list-group-item">{{ job }}</li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+{% endblock %}

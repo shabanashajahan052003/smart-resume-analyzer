@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+
+        <div class="card shadow p-4">
+            <h4 class="text-center mb-3">Upload Resume</h4>
+
+            {% if error %}
+            <div class="alert alert-danger">
+                {{ error }}
+            </div>
+            {% endif %}
+
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <input class="form-control mb-3" type="file" name="resume">
+
+                <button class="btn btn-primary w-100">
+                    Upload & Analyze
+                </button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

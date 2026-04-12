@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Analyzer</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: #f4f6f9;
+        }
+
+        .navbar {
+            background: #2c3e50;
+        }
+
+        .navbar-brand {
+            color: #fff !important;
+            font-weight: bold;
+        }
+
+        .nav-btn {
+            margin-left: 10px;
+        }
+
+        .card {
+            border-radius: 12px;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar px-4">
+    <span class="navbar-brand">Resume Analyzer</span>
+
+    <div class="ms-auto">
+        {% if user.is_authenticated %}
+            <span class="text-white me-3">Hi, {{ user.username }}</span>
+            <a href="/logout/" class="btn btn-light btn-sm nav-btn">Logout</a>
+        {% else %}
+            <a href="/login/" class="btn btn-light btn-sm nav-btn">Login</a>
+            <a href="/register/" class="btn btn-light btn-sm nav-btn">Register</a>
+        {% endif %}
+    </div>
+</nav>
+
+<!-- CONTENT -->
+<div class="container mt-5">
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>
