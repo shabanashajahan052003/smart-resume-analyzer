@@ -21,7 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-8$bh-uoows$xg)h!xltiwe1b)(5^d%mgo0!ky!90sb(ugbg6j6"
+SECRET_KEY = os.getenv(
+    "SECRET_KEY",
+    "django-insecure-8$bh-uoows$xg)h!xltiwe1b)(5^d%mgo0!ky!90sb(ugbg6j6"
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "False") == "True"
@@ -29,7 +32,7 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
-    ".vercel.app",
+    ".onrender.com",
 ]
 
 # Application definition
@@ -124,4 +127,5 @@ STATIC_URL = "static/"
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
